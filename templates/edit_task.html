@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block head %}
+{{super()}}
+{% endblock %}
+<body>
+    {%block content %}
+        <h2>{{ task.task }}</h2>
+        <p>Hello the task is {{task.task}}</p>
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1e35e93db4.js" crossorigin="anonymous"></script>
+</body>
+</html>
