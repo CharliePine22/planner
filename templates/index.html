@@ -36,11 +36,13 @@
         <ul>
             {% for tasks in all_tasks %}
                 <li><span id='task'>{{tasks.task}}</span> <a href="{{url_for('delete_todo', task_id=tasks.id)}}"><i class="fas fa-trash"></i></a> <i id='finished' class="fas fa-check"></i></li>
-
+                {% endfor %}
             <div class="back">
-            
+                <h1>Hello</h1>
+                <button id='swap'>Swap</button>
             </div>
-            {% endfor %}
+
+            =
         </ul>
     </div>
     </div>

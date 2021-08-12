@@ -15,8 +15,8 @@ db = SQLAlchemy(app)
 
 # Class for a new todo 
 class NewTask(db.Model):
-    id = db.Column(db.Integer, primary_key=True),
-    task = db.Column(db.String(250), unique=True, nullable=False),
+    id = db.Column(db.Integer, primary_key=True)
+    task = db.Column(db.String(250), unique=True, nullable=False)
     # location = db.Column(db.String(250), unique=False, nullable=True),
     # time = db.Column(db.DateTime, nullable=True, unique=False),
     # notes = db.Column(db.String(250), nullable=True, unique=False),

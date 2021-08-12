@@ -1,6 +1,7 @@
 const lis = document.querySelectorAll('#task');
 const check = document.querySelectorAll('#finished')
 const todo_container = document.querySelector('.task');
+const swap = document.querySelector('#swap')
 
 // Click the check mark to add a line-through the task
 for(let i = 0; i < lis.length; i++) {
@@ -21,3 +22,9 @@ for(let i = 0; i < lis.length; i++) {
         console.log(lis[i])
     })
 }
+
+// Flip card back to front
+swap.addEventListener('click', function() {
+    todo_container.classList.toggle('show')
+    console.log('CLICKED!')
+})
