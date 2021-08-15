@@ -8,9 +8,11 @@ for(let i = 0; i < lis.length; i++) {
     check[i].addEventListener('click', function() {
         if (lis[i].style.textDecoration == 'line-through') {
             lis[i].style.textDecoration = 'none'
+            lis[i].style.color = 'white'
         }
         else {
             lis[i].style.textDecoration = 'line-through'
+            lis[i].style.color = 'red'
         }
     }, false)
 }
@@ -19,7 +21,6 @@ for(let i = 0; i < lis.length; i++) {
 for(let i = 0; i < lis.length; i++) {
     lis[i].addEventListener('click', function() {
         todo_container.classList.toggle('show')
-        console.log(lis[i])
     })
 }
 

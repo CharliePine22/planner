@@ -13,6 +13,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# Grab current date
+today = datetime.date(datetime.now()).strftime("%B %d, %Y")
+
 # Class for a new todo 
 class NewTask(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,7 +27,21 @@ class NewTask(db.Model):
     def __init__(self, task):
         self.task = task
 
-db.create_all()  
+
+class NewGoal(db.Model):
+    # Table that contains an id as well as a goal and date to mark when started and accomplished.
+    id = db.Column(db.Integer, primary_key=True)
+    goal = db.Column(db.String(250), unique=True, nullable=False)
+    date_started = db.Column(db.DateTime, nullable=True)
+    date_finished = db.Column(db.DateTime, nullable=True)
+
+
+    def __init__(self, goal):
+        self.goal = goal
+        self.date_started = today
+
+# Run once to create the tables
+# db.create_all()  
 
 @app.route('/', methods=['GET', 'POST'])
 def todo():
@@ -38,13 +55,22 @@ def todo():
         return redirect(url_for('todo'))
 
     all_tasks = db.session.query(NewTask).all()
-    today = datetime.date(datetime.now()).strftime("%B %d, %Y")
+    if len(all_tasks) == 0:
+        message = 'No Current Tasks'
+        return render_template('index.html', date=today, message=message)
     return render_template('index.html', date=today, all_tasks=all_tasks)
 
-@app.route('/edit_task/<int:task_id>')
-def edit_task(task_id):
-    task = NewTask.query.get(task_id)
-    return render_template('edit_task.html', task=task)
+@app.route('/add_goal', methods=['GET', 'POST'])
+def add_new_goal():
+    if request.method == 'POST':
+        goal = request.form.get('new_goal')
+        new_goal = NewGoal(goal)
+        db.session.add(new_goal)
+        db.session.commit()
+        return redirect(url_for('todo'))
+        
+    all_goals = db.session.query(NewGoal).all()
+    return render_template('index.html', goals=all_goals)
 
 @app.route('/delete/<int:task_id>')
 def delete_todo(task_id):

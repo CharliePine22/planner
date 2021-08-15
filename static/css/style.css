@@ -1,13 +1,19 @@
 body {
     background-image: url('/static/img/black-and-purple.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 input[type='text'] {
     -webkit-backface-visibility: hidden;
 }
 
-.container {
+section {
+    display:flex;
+    width:100%;
+}
+
+.date {
     display:flex;
     justify-content: center;
     width: 100%;
@@ -40,16 +46,20 @@ input[type='text'] {
     background-image: url("/static/img/unsplash_mountain.jpg");
     background-size: cover;
     border-radius: 5%;
-    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     -webkit-transition: transform 1s;
     margin: 0 auto;
+    -webkit-transition: all 1s ease;
 }
 
 .back {
-    align-items: flex-start;
     -webkit-transform: rotateY(180deg);
     color:white;
     display:none;
+}
+
+.back h2 {
+    color:white;
 }
 
 .show {
@@ -57,8 +67,19 @@ input[type='text'] {
     background-image: url("/static/img/starry_sky.jpg");
 }
 
+.task.show .front {
+    display:none;
+} 
+
 .task.show .back {
     display:block;
+    position:absolute;
+    top: 0;
+    right: 2rem;
+}
+
+.task ol li{
+    list-style: circle;
 }
 
 .task li {
@@ -88,9 +109,15 @@ input[type='text'] {
     -webkit-backface-visibility: hidden;
 }
 
-button {
-    color:#FF6EC7 !important;
+.btn {
+    color:#FF6EC7;
     -webkit-backface-visibility: hidden;
+    background-color: black;
+}
+
+.btn:hover {
+    background-color:white;
+    color:#FF6EC7;
 }
 
 #task {
@@ -116,4 +143,18 @@ i:hover {
     animation: ease-in 1s;
     cursor: pointer;
     opacity: 1;
+}
+
+#swap {
+    margin: 2.5rem auto;
+    width: 5rem;
+    background-color: white;
+}
+
+#empty_db {
+    position: absolute;
+    top: 3em;
+    opacity: 30%;
+    font-size: 5rem;
+    font-family: 'Dancing Script', cursive;
 }
