@@ -71,7 +71,8 @@ def delete_todo(task_id):
 
 @app.route('/add_goal', methods=['GET', 'POST'])
 def add_new_goal():
-    count = NewGoal.query.count()
+    count = NewGoal.query.filter(NewGoal.date_finished == None).count()
+    print(count)
     if count == 3:
         return redirect(url_for('todo'))
     if request.method == 'POST':
@@ -80,6 +81,13 @@ def add_new_goal():
         db.session.add(new_goal)
         db.session.commit()
         return redirect(url_for('todo'))
+
+@app.route('/complete_goal/<int:goal_id>', methods=['GET', 'POST'])
+def complete_goal(goal_id):
+    goal = NewGoal.query.get(goal_id)
+    goal.date_finished = today
+    db.session.commit()
+    return redirect(url_for('todo'))
 
 @app.route('/delete_goal/<int:goal_id>')
 def delete_goal(goal_id):

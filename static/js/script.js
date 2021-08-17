@@ -5,7 +5,7 @@ const goals = document.querySelectorAll('#goal_name');
 const dateStarted = document.querySelectorAll('#date_started');
 const panel = document.getElementById('panel');
 const deleteGoal = document.querySelectorAll('#delete_goal');
-
+const completeGoal = document.querySelectorAll('#complete_goal')
 
 // Click the check mark to add a line-through the task
 for(let i = 0; i < lis.length; i++) {
@@ -36,9 +36,10 @@ for(let i=0; i < goals.length; i++) {
         this.style.zIndex = '2'
         panel.style.display = 'initial'
 
-        // Reveal date started and delete icon upon hovering
+        // Reveal date started, delete icon, and completion icon upon hovering
         dateStarted[i].style.display = 'block'
         deleteGoal[i].style.display = 'block'
+        completeGoal[i].style.display = 'block'
     })
 
     goals[i].addEventListener('mouseout', function() {
@@ -49,6 +50,7 @@ for(let i=0; i < goals.length; i++) {
         // Rehide the dates and the delete icon
         dateStarted[i].style.display = 'none'
         deleteGoal[i].style.display = 'none'
+        completeGoal[i].style.display = 'none'
 
         // todoContainer.style.transform = 'scale(1.0)'
     })

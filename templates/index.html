@@ -63,11 +63,13 @@
                 <h2 id='empty_db'>No Current Goals</h2>
             {% else %}
                 {% for goal in goals %}
-                <ol>
-                    <li id='goal_name'>
-                        <p>{{goal.goal}} <span id='date_started'>Date Started: {{goal.date_started}}</span> <a id='delete_goal' href="{{url_for('delete_goal', goal_id=goal.id)}}"><i class="fas fa-trash"></i></a></p>
-                    </li>
-                </ol>
+                    {% if goal.date_finished == None %}
+                        <ol>
+                            <li id='goal_name'>
+                                <p>{{goal.goal}} <span id='date_started'>Date Started: {{goal.date_started}}</span> <a id='delete_goal' href="{{url_for('delete_goal', goal_id=goal.id)}}"><i class="fas fa-trash"></i></a> <a href="{{url_for('complete_goal', goal_id=goal.id)}}"><i class="fas fa-clipboard-check" id='complete_goal'></i></a></p>
+                            </li>
+                        </ol>
+                    {% endif %}
                 {% endfor %}
             {% endif %}
         </div>

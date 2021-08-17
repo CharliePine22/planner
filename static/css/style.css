@@ -59,6 +59,10 @@ section {
     display:none;
 }
 
+.back .btn {
+    margin-right: 1.5rem;
+}
+
 .back h2 {
     color:white;
 }
@@ -177,7 +181,7 @@ i:hover {
     transform: scale(1.5);
 }
 
-#goal_name a {
+#date_started a  i {
     display:none;
 }
 
