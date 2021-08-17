@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
     <div class="container-fluid date">
         <!-- Date will be updated based on current date, this is just a placeholder date -->
         <h1 id="date_title">{{date}} Planner</h1>
@@ -44,11 +43,11 @@
             <ul>
                 <!-- List and display each task from the database -->
                 {% for tasks in all_tasks %}
-                    <li><span id='task'>{{tasks.task}}</span> <a href="{{url_for('delete_todo', task_id=tasks.id)}}"><i class="fas fa-trash"></i></a> <i id='finished' class="fas fa-check"></i></li>
+                    <li><span id='task'>{{tasks.task}}</span> <a href="{{url_for('delete_todo', task_id=tasks.id)}}"><i class="fas fa-trash"></i></a></li>
                 {% endfor %}
             </ul>
         </div>
-        
+
         <!-- Back Of Card -->
         <div class="back">
             <h2>Current Goals</h2>
@@ -65,18 +64,18 @@
             {% else %}
                 {% for goal in goals %}
                 <ol>
-                    <li>{{goal}}</li>
+                    <li id='goal_name'>
+                        <p>{{goal.goal}} <span id='date_started'>Date Started: {{goal.date_started}}</span> <a id='delete_goal' href="{{url_for('delete_goal', goal_id=goal.id)}}"><i class="fas fa-trash"></i></a></p>
+                    </li>
                 </ol>
                 {% endfor %}
             {% endif %}
         </div>
-
     </div>
-    
     <section>
         <button class='btn' id='swap'>Flip</button>
     </section>
-
+    <div id="panel"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1e35e93db4.js" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
