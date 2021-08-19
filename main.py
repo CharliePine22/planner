@@ -93,6 +93,7 @@ def add_new_goal():
 
     if count == 3:
         # Limit goals to 3 at a time
+        flash('You can only have 3 active goals at one time, erase or complete one to add more!')
         return redirect(url_for('todo'))
     if request.method == 'POST':
         goal = request.form.get('new_goal')
