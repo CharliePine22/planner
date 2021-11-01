@@ -249,6 +249,26 @@ i:hover {
     100% {opacity: 1;}
 }
 
+@-webkit-keyframes blinkingAnimation {
+    0% {opacity:1;}
+    20% {opacity: 0.5;}
+    40% {opacity:0;}
+    60% {opacity:1;}
+    80% {opacity: 0.3;}
+    100% {opacity: 1;}
+}
+
+@keyframes fadeErrorOut {
+    from {opacity :1; height:100%;}
+    to {opacity :0; height:0;}
+}
+
+@-webkit-keyframes fadeErrorOut {
+    from {opacity :1; height:100%;}
+    to {opacity :0; height:0%;}
+}
+
+
 .animate_blink {
--webkit-animation: blinkingAnimation .5s;
+-webkit-animation: blinkingAnimation .5s, fadeErrorOut 1.5s ease-in-out 3s forwards;
 }
