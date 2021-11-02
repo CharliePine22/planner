@@ -11,10 +11,10 @@ as well as display all the current and finished goals is in progress.
 ## Project Screen Shots
 
 ### Front of Card
-<img src="https://github.com/CharliePine22/planner/blob/main/planner-screenshot-1.png" alt="Your image title" height='400' width="350"/>
+<img src="https://github.com/CharliePine22/planner/blob/main/planner-screenshot-1.png" alt="The front of the application" height='400' width="350"/>
 
 ### Back of Card
-<img src="https://github.com/CharliePine22/planner/blob/main/planner-screenshot-2.png" alt="Your image title" height='400' width="350"/>
+<img src="https://github.com/CharliePine22/planner/blob/main/planner-screenshot-2.png" alt="The back of the application" height='400' width="350"/>
 
 # Installation and Setup Instructions
 Clone down this repository. 
